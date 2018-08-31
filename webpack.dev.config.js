@@ -30,7 +30,21 @@ module.exports = {
             {
                 test: /\.css$/,
                 include: path.resolve(__dirname, "src"),
+                exclude: /node_modules/,
                 use: ["style-loader", "css-loader"]
+            },
+            {
+                test: /\.css/,
+                exclude: /src/,
+                use: [
+                    "style-loader",
+                    {
+                        loader: "css-loader",
+                        options: {
+                            importLoaders:1
+                        }
+                    }
+                ]
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
