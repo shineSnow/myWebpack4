@@ -17,6 +17,9 @@ module.exports = {
         publicPath: "/",
         hot: true
     },
+    resolve: {
+        extensions: [".js", ".css",".json"]
+    },
     module: {
         rules: [
             {

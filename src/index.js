@@ -1,4 +1,8 @@
-import App from "./app.js"
+import "babel-polyfill"
+import App from "./container/app.js"
+
+
+
 
 
 
