@@ -1,40 +1,38 @@
 import "babel-polyfill"
 import React, {Component} from "react"
 import ReactDOM from "react-dom"
-import {Button} from "antd"
 import Container from './container/app'
+import {BrowserRouter, Route} from 'react-router-dom'
 
+import routes from './routers/index'
 
 class APP extends Component {
     render() {
         return (
-            <div>
+            <BrowserRouter>
                 <Container>
-                    <div>it is the success light!总是会有很多坑,但是我会勇往直前!</div>
+                    <div>
+                        {routes.map((route, index) => (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                exact={route.exact}
+                                component={route.cmp()}
+                            />
+                        ))}
+                    </div>
                 </Container>
-            </div>
+            </BrowserRouter>
+
         )
     }
 }
 
-ReactDOM.render(<APP/>,document.getElementById("app"))
+ReactDOM.render(<APP/>, document.getElementById("app"));
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-if(module.hot) {
-    module.hot.accept(()=> {
+if (module.hot) {
+    module.hot.accept(() => {
         console.log('资源热更新!')
     })
 }
