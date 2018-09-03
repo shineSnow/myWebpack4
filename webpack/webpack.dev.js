@@ -17,25 +17,25 @@ module.exports = merge(common, {
         rules: [
             {
                 test: /\.css$/,
-                // include: path.resolve(__dirname, "src"),
+                include:/src/,
                 exclude: /node_modules/,
-                use: [
-                    "style-loader",
-                    "css-loader"
-                ]
-            },
-            {
-                test: /\.css$/,
-                exclude: /src/,
                 use: [
                     "style-loader",
                     {
                         loader: "css-loader",
                         options: {
-                            importLoaders: 1
+                            modules: true,
+                            localIdentName: "[name]––[local}__[hash:base64:5]"
                         }
-                    }
+                    },
+                    "postcss-loader"
                 ]
+            },
+            {
+                test: /\.css$/,
+                exclude: /src/,
+                include:/node_modules/,
+                use: ["style-loader", "css-loader"]
             },
         ]
     },
