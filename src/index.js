@@ -2,14 +2,14 @@ import "babel-polyfill"
 import React, {Component} from "react"
 import ReactDOM from "react-dom"
 import Container from './container/app'
-import {BrowserRouter, Route} from 'react-router-dom'
+import {HashRouter as Router, Route} from 'react-router-dom'
 
 import routes from './routers/index'
 
 class APP extends Component {
     render() {
         return (
-            <BrowserRouter>
+            <Router>
                 <Container>
                     <div>
                         {routes.map((route, index) => (
@@ -22,7 +22,7 @@ class APP extends Component {
                         ))}
                     </div>
                 </Container>
-            </BrowserRouter>
+            </Router>
 
         )
     }
