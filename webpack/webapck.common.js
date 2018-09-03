@@ -6,8 +6,10 @@ const webpack = require("webpack")
 module.exports = {
     entry: "./src/index.js",
     output: {
-        filename: "[name].bundle.js",
-        path: path.resolve(__dirname, "dist")
+        filename: "[name][hash].bundle.js",
+        chunkFilename:"[name].[chunkhash].js",
+        path: path.resolve(__dirname, "../dist"),
+        publicPath:"/"
     },
 
     resolve: {
@@ -19,6 +21,12 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: ["babel-loader"],
+            },
+            {
+                test: /\.css$/,
+                exclude: /src/,
+                include:/node_modules/,
+                use: ["style-loader", "css-loader"]
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
@@ -38,6 +46,6 @@ module.exports = {
             template: "./index.template.html",
             inject: "body",
         }),
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin([path.resolve(__dirname, "../dist")]),
     ]
 }

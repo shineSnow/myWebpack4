@@ -31,12 +31,6 @@ module.exports = merge(common, {
                     "postcss-loader"
                 ]
             },
-            {
-                test: /\.css$/,
-                exclude: /src/,
-                include:/node_modules/,
-                use: ["style-loader", "css-loader"]
-            },
         ]
     },
     plugins: [
