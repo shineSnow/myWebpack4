@@ -1,13 +1,34 @@
 import React from 'react'
 import style from './style.css'
-console.log('style',style)
+import store from './store.js'
+import {observer} from 'mobx-react'
+import {toJS} from 'mobx'
 
+@observer
 export default class extends React.Component {
+
+    componentWillMount() {
+        store.getList();
+    }
+
     render() {
+        let list = store.homeList
+        console.log('list',toJS(list))
         return (
             <div>
                 <h1  className={style.co} style={{padding:'5px'}}>index</h1>
-                <div>it is the success light!总是会有很多坑,但是我会勇往直前!下面是route</div>
+                <div>
+                    <ul>
+                        {
+                            list&&list.map(item => {
+                                return <li key={item.id}>
+                                    <span>{item.id}</span>
+                                    <h3>{item.name}</h3>
+                                </li>
+                            })
+                        }
+                    </ul>
+                </div>
             </div>
         )
     }

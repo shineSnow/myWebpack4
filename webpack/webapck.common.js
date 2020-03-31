@@ -30,7 +30,7 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
-                include: path.resolve(__dirname, "src"),
+                exclude: /node_modules/,
                 use: ["file-loader"]
             },
             {

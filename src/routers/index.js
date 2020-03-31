@@ -3,6 +3,7 @@ import Index from '../components/index/index'
 import About from '../components/about/index'
 import News from '../components/news/index'
 import Test from '../components/test/index'
+import LazyLoad from '../components/lazyLoad/index'
 
 const routes =[
     {
@@ -22,6 +23,10 @@ const routes =[
         path:'/test',
         cmp:() => Test,
     },
+    {
+        path:'/lazyLoad',
+        cmp:() => LazyLoad
+    }
 ]
 
 
